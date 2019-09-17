@@ -18,9 +18,9 @@ import java.util.Date;
 @Slf4j
 public class DelayModeConsumer {
 
-    @RabbitListener(queues = "${delay.mode.queue}")
+    @RabbitListener(queues = "worker-queue")
     @RabbitHandler
-    public void simpleModeConsumer(String message) {
+    public void simpleModeConsumer(String message) throws InterruptedException {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         log.info("简单队列消息消费者：" + message + " 接收时间" + sf.format(new Date()));
     }
